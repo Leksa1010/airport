@@ -24,7 +24,7 @@ axios.get('https://flight.pequla.com/api/flight?type=departure')
           <th scope="col">Izlaz</th>
           <th scope="col">Planirano vreme</th>
           <th scope="col">Procenjeno vreme</th>
-          <th scope="col">Info</th>
+          <th scope="col">Akcije</th>
         </tr>
         </thead>
         <tbody>
@@ -35,8 +35,8 @@ axios.get('https://flight.pequla.com/api/flight?type=departure')
           <td>{{ new Date(flight.scheduledAt).toLocaleString('sr') }}</td>
           <td>{{ flight.estimatedAt ? new Date(flight.estimatedAt).toLocaleString('sr') : 'N/A'}}</td>
           <td>
-            <button type="button" class="btn btn-primary">A</button>
-            <button type="button" class="btn btn-danger">B</button>
+            <button type="button" class="btn btn-info mx-1">A</button>
+            <button type="button" class="btn btn-success mx-1">B</button>
           </td>
         </tr>
         </tbody>
