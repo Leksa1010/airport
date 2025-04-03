@@ -1,10 +1,16 @@
 <script setup lang="ts">
+import {ref} from 'vue'
+import axios from "axios";
 
+const flights = ref<any>()
+axios.get('https://flight.pequla.com/api/flight?type=arrival')
+    .then(rsp => flights.value = rsp.data)
 </script>
 
 <template>
 
   <div id="Departures">
+    {{ flights }}
     <h1 class="h3">Odlasci</h1>
     <hr>
     <nav aria-label="Page navigation example">
