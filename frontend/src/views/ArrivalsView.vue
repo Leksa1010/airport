@@ -19,12 +19,12 @@ axios.get('https://flight.pequla.com/api/flight?type=arrival')
       <table class="table table-striped table-hover text-center">
         <thead>
         <tr>
-          <th scope="col">Broj leta</th>
-          <th scope="col">Odredište</th>
-          <th scope="col">Izlaz</th>
-          <th scope="col">Planirano vreme</th>
-          <th scope="col">Procenjeno vreme</th>
-          <th scope="col">Akcije</th>
+          <th scope="col"><i class="fa-solid fa-hashtag"></i> Broj leta</th>
+          <th scope="col"><i class="fa-solid fa-map-pin"></i> Odredište</th>
+          <th scope="col"><i class="fa-solid fa-person-walking-luggage"></i> Izlaz</th>
+          <th scope="col"><i class="fa-solid fa-clock"></i> Planirano vreme</th>
+          <th scope="col"><i class="fa-solid fa-clock"></i> Procenjeno vreme</th>
+          <th scope="col"><i class="bi bi-hand-index-thumb"></i> Akcije</th>
         </tr>
         </thead>
         <tbody>
