@@ -1,12 +1,54 @@
 <script setup lang="ts">
-import {ref} from 'vue'
+import {onMounted, ref} from 'vue'
 import type {PageModel} from "@/models/page.model.ts";
 import type {FlightModel} from "@/models/flight.model.ts";
 import {FlightService} from "@/services/FlightService.ts";
 
+const input = ref<string>()
 const flights = ref<PageModel<FlightModel>>()
-FlightService.getDepartures()
-    .then(rsp => flights.value = rsp.data)
+
+function retrieveData(page = 0) {
+  if (input.value != undefined && input.value != '') {
+    FlightService.getFlightsByDestination(input.value, page)
+        .then(rsp => flights.value = rsp.data)
+    return
+  }
+  FlightService.getDepartures(page)
+      .then(rsp => flights.value = rsp.data)
+}
+
+function first() {
+  if (flights.value == undefined) return
+  if (flights.value.first) return
+  retrieveData(0)
+}
+
+function previous() {
+  if (flights.value == undefined) return
+  if (flights.value.first) return
+  retrieveData(flights.value.number - 1)
+}
+
+function next() {
+  if (flights.value == undefined) return
+  if (flights.value.last) return
+  retrieveData(flights.value.number + 1)
+}
+
+function last() {
+  if (flights.value == undefined) return
+  if (flights.value.first) return
+  retrieveData(flights.value.totalPages - 1)
+}
+
+onMounted(() => retrieveData())
+
+function search() {
+  if (input.value != undefined) {
+    retrieveData()
+  }
+}
+
 </script>
 
 <template>
@@ -40,22 +82,26 @@ FlightService.getDepartures()
         </tr>
         </tbody>
       </table>
-      <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-            </a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
-            </a>
-          </li>
-        </ul>
+      <nav>
+        <nav>
+          <ul class="pagination justify-content-center">
+            <li class="page-item">
+              <button type="button" class="page-link" @click="first">Prva</button>
+            </li>
+            <li class="page-item">
+              <button type="button" class="page-link" @click="previous">Prethodna</button>
+            </li>
+            <li class="page-item">
+              <button type="button" class="page-link">{{ flights.number + 1 }}</button>
+            </li>
+            <li class="page-item">
+              <button type="button" class="page-link" @click="next">Sledeća</button>
+            </li>
+            <li class="page-item">
+              <button type="button" class="page-link" @click="last">Poslednja</button>
+            </li>
+          </ul>
+        </nav>
       </nav>
     </div>
   </div>
