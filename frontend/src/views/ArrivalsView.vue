@@ -13,7 +13,7 @@ function retrieveData(page = 0) {
         .then(rsp => flights.value = rsp.data)
     return
   }
-  FlightService.getDepartures(page)
+  FlightService.getArrivals(page)
       .then(rsp => flights.value = rsp.data)
 }
 
@@ -53,7 +53,7 @@ function search() {
 
 <template>
 
-  <div id="Departures">
+  <div id="Arrivals">
     <h1 class="container text-center"><i class="fa-solid fa-plane-arrival"></i> Dolasci</h1>
     <hr>
     <div class="container" v-if="flights">

@@ -15,7 +15,7 @@ export class FlightService {
     }
 
     static async getArrivals(page = 0) {
-        return await client.get(`/flight?page=${page}&size=12&type=arrivale&sort=scheduledAt,asc`)
+        return await client.get(`/flight?page=${page}&size=12&type=arrival&sort=scheduledAt,asc`)
     }
 
     static async getFlightById(id: number) {
