@@ -35,8 +35,8 @@ axios.get('https://flight.pequla.com/api/flight?type=departure')
           <td>{{ new Date(flight.scheduledAt).toLocaleString('sr') }}</td>
           <td>{{ flight.estimatedAt ? new Date(flight.estimatedAt).toLocaleString('sr') : 'N/A'}}</td>
           <td>
-            <button type="button" class="btn btn-info mx-1"><i class="fa-solid fa-circle-info"></i></button>
-            <button type="button" class="btn btn-success mx-1"><i class="fa-solid fa-cart-shopping"></i></button>
+            <button type="button" class="btn btn-outline-info mx-1"><i class="fa-solid fa-circle-info"></i></button>
+            <button type="button" class="btn btn-outline-success mx-1"><i class="fa-solid fa-cart-shopping"></i></button>
           </td>
         </tr>
         </tbody>
