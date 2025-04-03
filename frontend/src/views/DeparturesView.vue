@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import {ref} from 'vue'
-import axios from "axios";
 import type {PageModel} from "@/models/page.model.ts";
 import type {FlightModel} from "@/models/flight.model.ts";
 import {FlightService} from "@/services/FlightService.ts";
@@ -13,7 +12,6 @@ FlightService.getDepartures()
 <template>
 
   <div id="Departures">
-<!--    {{ flights }}-->
     <h1 class="container text-center"><i class="fa-solid fa-plane-departure"></i> Odlasci</h1>
     <hr>
     <div class="container" v-if="flights">
