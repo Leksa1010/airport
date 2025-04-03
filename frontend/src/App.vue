@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+import {RouterView} from 'vue-router'
 import NavbarLink from "@/components/NavbarLink.vue";
+
+
 </script>
 
 <template>
@@ -27,8 +29,6 @@ import NavbarLink from "@/components/NavbarLink.vue";
     </div>
   </nav>
 
-<!--  <RouterLink to="/">Home</RouterLink>
-  <RouterLink to="/about">About</RouterLink>-->
   <RouterView />
 
   <footer class="mx-auto text-center">&copy; Aleksa Petrović za Univerzitet Singidunum 2025</footer>
