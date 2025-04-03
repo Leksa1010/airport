@@ -12,7 +12,7 @@ import NavbarLink from "@/components/NavbarLink.vue";
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
           <NavbarLink to="/" name="Home" />
-          <NavbarLink to="/destinations" name="Destinacije" />
+          <NavbarLink to="/destinations" name="Početna">
           <NavbarLink to="/departures" name="Odlazni letovi" />
           <NavbarLink to="/arrivals" name="Dolazni letovi" />
 
