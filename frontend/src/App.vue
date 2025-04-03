@@ -6,13 +6,12 @@ import NavbarLink from "@/components/NavbarLink.vue";
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="/">
         <i class="fa-solid fa-plane-up"></i> Aerodrom</a>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-          <NavbarLink to="/" name="Home" />
-          <NavbarLink to="/destinations" name="Početna">
+          
+          <NavbarLink to="/destinations" name="Destinacije"/>
           <NavbarLink to="/departures" name="Odlazni letovi" />
           <NavbarLink to="/arrivals" name="Dolazni letovi" />
 
