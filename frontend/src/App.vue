@@ -10,7 +10,7 @@ import NavbarLink from "@/components/NavbarLink.vue";
         <i class="fa-solid fa-plane-up"></i> Aerodrom</a>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          
+
           <NavbarLink to="/destinations" name="Destinacije"/>
           <NavbarLink to="/departures" name="Odlazni letovi" />
           <NavbarLink to="/arrivals" name="Dolazni letovi" />
@@ -27,8 +27,8 @@ import NavbarLink from "@/components/NavbarLink.vue";
     </div>
   </nav>
 
-  <RouterLink to="/">Home</RouterLink>
-  <RouterLink to="/about">About</RouterLink>
+<!--  <RouterLink to="/">Home</RouterLink>
+  <RouterLink to="/about">About</RouterLink>-->
   <RouterView />
 
   <footer class="mx-auto text-center">&copy; Aleksa Petrović za Univerzitet Singidunum 2025</footer>
