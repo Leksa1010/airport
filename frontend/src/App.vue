@@ -6,7 +6,7 @@ import NavbarLink from "@/components/NavbarLink.vue";
 </script>
 
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <nav class="navbar navbar-expand-lg" style="background-color: #0f3460;">
     <div class="container">
       <a class="navbar-brand" href="/">
         <i class="fa-solid fa-plane-up"></i> Aerodrom</a>
