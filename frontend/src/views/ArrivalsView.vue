@@ -3,9 +3,10 @@ import {ref} from 'vue'
 import axios from "axios";
 import type {PageModel} from "@/models/page.model.ts";
 import type {FlightModel} from "@/models/flight.model.ts";
+import {FlightService} from "@/services/FlightService.ts";
 
 const flights = ref<PageModel<FlightModel>>()
-axios.get('https://flight.pequla.com/api/flight?type=arrival')
+FlightService.getArrivals()
     .then(rsp => flights.value = rsp.data)
 </script>
 
