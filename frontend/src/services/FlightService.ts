@@ -25,4 +25,8 @@ export class FlightService {
     static async getFlightsByDestination(dest: string, page: number) {
         return await client.get(`/flight/destination/${dest}?page=${page}&size=12&type=departure&sort=scheduledAt,asc`)
     }
+
+    static async getAllFlights(page = 0) {
+        return await client.get(`/flight/?page=${page}&size=12&sort=scheduledAt,asc`)
+    }
 }
