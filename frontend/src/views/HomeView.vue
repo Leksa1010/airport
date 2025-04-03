@@ -53,10 +53,18 @@ function search() {
 
 <template>
 
-  <div id="Home">
+  <div class="container" id="Home">
     <h1 class="container text-center"><i class="fa-solid fa-paper-plane"></i> Svi letovi</h1>
     <hr>
-    <div class="container" v-if="flights">
+    <div class="input-group">
+      <span class="input-group-text" id="search">
+        <i class="bi bi-search"></i>
+      </span>
+      <input type="text" class="form-control" aria-describedby="search" v-model="input" @keyup="search"
+             placeholder="Pretražite odredišta">
+    </div>
+    <hr>
+    <div v-if="flights">
       <table class="table table-striped table-hover text-center">
         <thead>
         <tr>

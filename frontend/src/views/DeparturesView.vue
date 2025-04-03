@@ -53,10 +53,10 @@ function search() {
 
 <template>
 
-  <div id="Departures">
+  <div class="container" id="Departures">
     <h1 class="container text-center"><i class="fa-solid fa-plane-departure"></i> Odlasci</h1>
     <hr>
-    <div class="container" v-if="flights">
+    <div v-if="flights">
       <table class="table table-striped table-hover text-center">
         <thead>
         <tr>
