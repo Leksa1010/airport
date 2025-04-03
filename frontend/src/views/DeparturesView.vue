@@ -72,12 +72,16 @@ function search() {
         <tr v-for="flight in flights.content" :flight-id="flight.id">
           <th scope="row">{{ flight.flightNumber }}</th>
           <td>{{ flight.destination }}</td>
-          <td>{{ (flight.gate)? flight.gate : "N/A" }}</td>
+          <td>{{ (flight.gate) ? flight.gate : "N/A" }}</td>
           <td>{{ new Date(flight.scheduledAt).toLocaleString('sr') }}</td>
-          <td>{{ flight.estimatedAt ? new Date(flight.estimatedAt).toLocaleString('sr') : 'N/A'}}</td>
+          <td>{{ flight.estimatedAt ? new Date(flight.estimatedAt).toLocaleString('sr') : 'N/A' }}</td>
           <td>
-            <button type="button" class="btn btn-outline-info mx-1"><i class="fa-solid fa-circle-info"></i></button>
-            <button type="button" class="btn btn-outline-success mx-1"><i class="fa-solid fa-cart-shopping"></i></button>
+            <div class="btn-group">
+              <RouterLink class="btn btn-outline-info mx-1" :to="'/flight/' + flight.id" title="Detalji"><i
+                  class="fa-solid fa-circle-info"></i></RouterLink>
+              <button type="button" class="btn btn-outline-success mx-1"><i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
           </td>
         </tr>
         </tbody>

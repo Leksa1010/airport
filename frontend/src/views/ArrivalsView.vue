@@ -76,8 +76,12 @@ function search() {
           <td>{{ new Date(flight.scheduledAt).toLocaleString('sr') }}</td>
           <td>{{ flight.estimatedAt ? new Date(flight.estimatedAt).toLocaleString('sr') : 'N/A' }}</td>
           <td>
-            <button type="button" class="btn btn-outline-info mx-1"><i class="fa-solid fa-circle-info"></i></button>
-            <button type="button" class="btn btn-outline-success mx-1"><i class="fa-solid fa-cart-shopping"></i></button>
+            <div class="btn-group">
+              <RouterLink class="btn btn-outline-info mx-1" :to="'/flight/' + flight.id" title="Detalji"><i
+                  class="fa-solid fa-circle-info"></i></RouterLink>
+              <button type="button" class="btn btn-outline-success mx-1"><i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
           </td>
         </tr>
         </tbody>
