@@ -18,10 +18,6 @@ import NavbarLink from "@/components/NavbarLink.vue";
           <NavbarLink to="/arrivals" name="Dolazni letovi" />
 
         </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Pretražite letove" aria-label="Search">
-          <button class="btn btn-success" type="submit">Pretraga</button>
-        </form>
         <div class="navbar-text">
           Korisnik
         </div>
