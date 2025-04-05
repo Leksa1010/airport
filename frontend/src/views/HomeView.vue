@@ -55,7 +55,6 @@ function search() {
 
   <div class="container" id="Home">
     <h1 class="container text-center"><i class="fa-solid fa-paper-plane"></i> Svi letovi</h1>
-    <hr>
     <div class="input-group">
       <span class="input-group-text" id="search">
         <i class="bi bi-search"></i>

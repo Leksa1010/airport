@@ -20,14 +20,14 @@ onMounted(() => retrieveData())
 </script>
 
 <template>
-  <br>
-  <div class="container px-4">
+  <div class="container px-4" id="Destinations">
+    <h1 class="text-center"><i class="fa-solid fa-map-pin"></i> Destinacije</h1>
     <div class="row gx-5" v-if="flights">
       <div class="card col-3 p-3 md-auto" v-for="flight in flights.content">
         <img :src="toImg(flight.destination)" class="card-img-top" alt="...">
         <div class="card-body">
-          <h3 class="card-title"></h3>
-          <p class="card-text text-center">{{ flight.destination }}</p>
+          <h2 class="card-title"></h2>
+          <h5 class="card-text text-center">{{ flight.destination }}</h5>
           <div class="container">
 
             <div class="d-flex justify-content-between">
@@ -47,5 +47,7 @@ onMounted(() => retrieveData())
       </div>
     </div>
   </div>
+
+  <br>
 
 </template>
