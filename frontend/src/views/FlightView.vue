@@ -61,10 +61,10 @@ function destImg() {
               Flight number: <strong> {{ flight?.flightNumber }} </strong>
             </li>
             <li class="list-group-item">
-              Departure: <strong>{{ flight?.scheduledAt }} </strong>
+              Departure: <strong>{{ new Date(flight?.scheduledAt).toLocaleString('sr') }} </strong>
             </li>
             <li class="list-group-item" v-if="flight?.estimatedAt">
-              Estimated at: <strong> {{ flight?.estimatedAt }} </strong>
+              Estimated at: <strong> {{ new Date(flight?.estimatedAt).toLocaleString('sr') }} </strong>
             </li>
             <li class="list-group-item" v-if="flight?.plane">
               Plane: <strong> {{ flight?.plane }} </strong>
