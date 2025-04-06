@@ -32,17 +32,12 @@ onMounted(() => retrieveData())
 
             <div class="d-flex justify-content-between">
                 <!-- Odlazni letovi -->
-                <div class="flex-column" v-if="flights">
-                  <h6>Odlazni letovi</h6>
-                  <RouterLink class="btn btn-outline-info" :to="'/destination/' + flight.destination" title="Odlzni">
-                    <i class="fa-solid fa-plane-departure"></i>
+                <div class="text-center" v-if="flights">
+                  <h6>Pretraži letove za destinaciju</h6>
+                  <RouterLink class="btn btn-outline-info" :to="'/destination/' + flight.destination" title="Pretraga">
+                    <i class="fa-solid fa-magnifying-glass"></i>
                   </RouterLink>
                 </div>
-
-              <!-- Dolazni letovi -->
-              <div class="flex-column">
-                <h6>Dolazni letovi</h6>
-              </div>
             </div>
 
           </div>
