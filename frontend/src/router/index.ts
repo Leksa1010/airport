@@ -30,6 +30,11 @@ const router = createRouter({
       component: () => import('../views/DestinationsView.vue'),
     },
     {
+      path: '/destination/:destination',
+      name: 'destinationbrowser',
+      component: () => import('../views/DestinationBrowserView.vue'),
+    },
+    {
       path: '/flight/:id',
       name: 'flight',
       component: () => import('../views/FlightView.vue'),
