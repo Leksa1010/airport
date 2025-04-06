@@ -38,7 +38,8 @@ onMounted(() => retrieveData())
       </ol>
     </nav>
     <div v-if="flights">
-      <h1 class="text-center">Odredište: {{ dest }}</h1>
+      <h1 class="text-center">Letovi za odredište: {{ dest }}</h1>
+      <hr>
       <table class="table table-striped table-hover text-center">
         <thead>
         <tr>
