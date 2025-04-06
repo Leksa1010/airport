@@ -30,7 +30,7 @@ const router = createRouter({
       component: () => import('../views/DestinationsView.vue'),
     },
     {
-      path: '/destination/:destination',
+      path: '/destination/:id',
       name: 'destinationbrowser',
       component: () => import('../views/DestinationBrowserView.vue'),
     },
