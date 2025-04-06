@@ -55,19 +55,19 @@ function destImg() {
           </h1>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
-              Key: <strong>{{ flight?.flightKey }}</strong>
+              ID: <strong>{{ flight?.id }}</strong>
             </li>
             <li class="list-group-item">
-              Flight number: <strong> {{ flight?.flightNumber }} </strong>
+              Broj leta: <strong> {{ flight?.flightNumber }} </strong>
             </li>
             <li class="list-group-item">
-              Departure: <strong>{{ new Date(flight?.scheduledAt).toLocaleString('sr') }} </strong>
+              Planirano vreme: <strong>{{ new Date(flight?.scheduledAt).toLocaleString('sr') }} </strong>
             </li>
             <li class="list-group-item" v-if="flight?.estimatedAt">
-              Estimated at: <strong> {{ new Date(flight?.estimatedAt).toLocaleString('sr') }} </strong>
+              Procenjeno vreme: <strong> {{ new Date(flight?.estimatedAt).toLocaleString('sr') }} </strong>
             </li>
-            <li class="list-group-item" v-if="flight?.plane">
-              Plane: <strong> {{ flight?.plane }} </strong>
+            <li class="list-group-item" v-if="flight?.connectedFlight">
+              Povezani let: <strong> {{ flight?.connectedFlight }} </strong>
             </li>
             <li class="list-group-item" v-if="flight?.gate">
               Gate: <strong> {{ flight?.gate }} </strong>
