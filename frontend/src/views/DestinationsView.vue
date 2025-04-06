@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {FlightModel} from '@/models/flight.model';
+import type {FlightModel} from '@/models/flight.model';
 import {FlightService} from '@/services/FlightService';
 import {onMounted, ref} from "vue";
 import type {PageModel} from "@/models/page.model.ts"
@@ -34,6 +34,9 @@ onMounted(() => retrieveData())
                 <!-- Odlazni letovi -->
                 <div class="flex-column" v-if="flights">
                   <h6>Odlazni letovi</h6>
+                  <RouterLink class="btn btn-outline-info" :to="'/destination/' + flight.destination" title="Odlzni">
+                    <i class="fa-solid fa-plane-departure"></i>
+                  </RouterLink>
                 </div>
 
               <!-- Dolazni letovi -->
