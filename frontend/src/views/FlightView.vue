@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { FlightModel } from '@/models/flight.model';
+import type {FlightModel} from '@/models/flight.model';
 import router from '@/router';
 import {FlightService} from "@/services/flight.service.ts";
-import { ref } from 'vue';
-import { useRoute } from 'vue-router';
+import {ref} from 'vue';
+import {useRoute} from 'vue-router';
 
 
 const route = useRoute()
@@ -12,7 +12,7 @@ const flight = ref<FlightModel>()
 FlightService.getFlightById(id)
     .then(rsp => flight.value = rsp.data)
     .catch(e => router.push({
-      path:'/'
+      path: '/'
     }))
 
 function destImg() {
@@ -39,11 +39,9 @@ function destImg() {
         </li>
       </ol>
     </nav>
-
-
     <div class="row mb-3">
       <div class="col-6">
-        <img :src="destImg()" :alt="flight?.destination" class="card-img-top" />
+        <img :src="destImg()" :alt="flight?.destination" class="card-img-top"/>
       </div>
       <div class="col-6">
         <div class="card" style="width: 20rem;">
@@ -74,12 +72,18 @@ function destImg() {
             </li>
           </ul>
         </div>
+        <br>
+        <div class="btn-group">
+          <br>
+          <RouterLink class="btn btn-outline-success btn-lg mx-1" :to="'/flight/' + flight.id + '/book'" title="Rezervacija"><i
+              class="fa-solid fa-cart-shopping"></i> Rezerviši kartu</RouterLink>
+        </div>
       </div>
     </div>
     <div class="row mb-3">
       <iframe class="mx-auto" height="400"
               :src="`https://www.google.com/maps?output=embed&amp;q=${flight.destination}`" loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade" id="gmaps"> </iframe>
+              referrerpolicy="no-referrer-when-downgrade" id="gmaps"></iframe>
     </div>
   </div>
 </template>
