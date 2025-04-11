@@ -34,9 +34,6 @@ function destImg() {
           <RouterLink v-if="flight.type.name === 'DEPARTURE'" to="/departures">Odlasci</RouterLink>
           <RouterLink v-else to="/arrivals">Dolasci</RouterLink>
         </li>
-        <li class="breadcrumb-item">
-          Detalji
-        </li>
         <li class="breadcrumb-item active" aria-current="page">
           {{ flight.destination }} {{ flight.flightNumber }}
         </li>
