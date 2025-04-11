@@ -18,4 +18,8 @@ export class TicketService {
     static async getFlightById(id: number) {
         return await client.get('/flight/' + id)
     }
+
+    static async getAllAirlines() {
+        return await client.get('/airlines')
+    }
 }
