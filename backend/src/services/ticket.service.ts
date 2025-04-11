@@ -1,7 +1,6 @@
-import {AppDataSource} from "../db";
-import {Ticket} from "../entities/Ticket";
-import {IsNull} from "typeorm";
-import {isNull} from "node:util";
+import { IsNull } from "typeorm";
+import { AppDataSource } from "../db";
+import { Ticket } from "../entities/Ticket";
 
 const repo = AppDataSource.getRepository(Ticket)
 
@@ -16,7 +15,7 @@ export class TicketService {
             }
         })
 
-        data.forEach(e => delete e.deletedAt)
+        data.forEach(e=>delete e.deletedAt)
         return data
     }
 
@@ -38,8 +37,8 @@ export class TicketService {
             }
         })
 
-        if (data == undefined)
-            throw new Error("Karta nije pronađena")
+        if(data == undefined)
+            throw new Error('Ticket not found')
 
         data.deletedAt = new Date()
         await repo.save(data)
