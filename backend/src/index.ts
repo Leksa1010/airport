@@ -3,7 +3,8 @@ import express from 'express'
 import morgan from 'morgan'
 import cors from 'cors'
 import {AirlineRoute} from "./routes/airline.route";
-import {TicketRouter} from "./routes/ticket.route";
+import {TicketRoute} from "./routes/ticket.route";
+import {FlightRoute} from "./routes/flight.route";
 
 const app = express()
 app.use(express.json())
@@ -19,4 +20,5 @@ AppDataSource.initialize()
     .catch(e => console.log(e))
 
 app.use('/api/airline', AirlineRoute)
-app.use('/api/ticket', TicketRouter)
+app.use('/api/ticket', TicketRoute)
+app.use('/api/flight', FlightRoute)
