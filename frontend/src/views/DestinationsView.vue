@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type {FlightModel} from '@/models/flight.model';
-import {FlightService} from '@/services/FlightService';
+import {FlightService} from '@/services/flight.service.ts';
 import {onMounted, ref} from "vue";
 import type {PageModel} from "@/models/page.model.ts"
 

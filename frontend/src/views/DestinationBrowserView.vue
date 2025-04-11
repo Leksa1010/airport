@@ -2,7 +2,7 @@
 import type { FlightModel } from '@/models/flight.model';
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
-import { FlightService } from '@/services/FlightService';
+import { FlightService } from '@/services/flight.service.ts';
 import router from '@/router';
 import type {PageModel} from "@/models/page.model.ts";
 

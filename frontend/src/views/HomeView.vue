@@ -2,7 +2,7 @@
 import {onMounted, ref} from 'vue'
 import type {PageModel} from "@/models/page.model.ts";
 import type {FlightModel} from "@/models/flight.model.ts";
-import {FlightService} from "@/services/FlightService.ts";
+import {FlightService} from "@/services/flight.service.ts";
 
 const input = ref<string>()
 const flights = ref<PageModel<FlightModel>>()

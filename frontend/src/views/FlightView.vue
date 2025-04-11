@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { FlightModel } from '@/models/flight.model';
 import router from '@/router';
-import {FlightService} from "@/services/FlightService.ts";
+import {FlightService} from "@/services/flight.service.ts";
 import { ref } from 'vue';
 import { useRoute } from 'vue-router';
 
