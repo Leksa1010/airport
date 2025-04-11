@@ -98,4 +98,5 @@ function book() {
       </div>
     </div>
   </div>
+  <br>
 </template>
