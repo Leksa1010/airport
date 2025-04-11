@@ -43,11 +43,6 @@ function last() {
 
 onMounted(() => retrieveData())
 
-function search() {
-  if (input.value != undefined) {
-    retrieveData()
-  }
-}
 
 </script>
 
