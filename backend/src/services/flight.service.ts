@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const client = axios.create({
     baseURL: "https://flight.pequla.com/api/flight",
     headers: {
