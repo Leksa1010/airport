@@ -16,6 +16,7 @@ import NavbarLink from "@/components/NavbarLink.vue";
           <NavbarLink to="/destinations" name="Destinacije"/>
           <NavbarLink to="/departures" name="Odlazni letovi" />
           <NavbarLink to="/arrivals" name="Dolazni letovi" />
+          <NavbarLink to="/ticket" name="Karte" />
 
         </ul>
         <div class="navbar-text">
