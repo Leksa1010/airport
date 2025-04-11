@@ -74,7 +74,6 @@ function destImg() {
         </div>
         <br>
         <div class="btn-group">
-          <br>
           <RouterLink class="btn btn-outline-success btn-lg mx-1" :to="'/flight/' + flight.id + '/book'" title="Rezervacija"><i
               class="fa-solid fa-cart-shopping"></i> Rezerviši kartu</RouterLink>
         </div>
