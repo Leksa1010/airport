@@ -2,7 +2,6 @@
 
 import type {AirlineModel} from '@/models/airline.model';
 import type {FlightModel} from '@/models/flight.model';
-import {FlightService} from '@/services/flight.service';
 import {TicketService} from '@/services/ticket.service';
 import {ref} from 'vue';
 import {useRoute, useRouter} from 'vue-router';
