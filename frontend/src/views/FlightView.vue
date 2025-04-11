@@ -28,7 +28,7 @@ function destImg() {
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <RouterLink to="/">Home</RouterLink>
+          <RouterLink to="/">Početna</RouterLink>
         </li>
         <li class="breadcrumb-item">
           <RouterLink v-if="flight.type.name === 'DEPARTURE'" to="/departures">Odlasci</RouterLink>
