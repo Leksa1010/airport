@@ -34,7 +34,7 @@ TicketService.getAllAirlines()
       ticket.airlineId = rsp.data[0].airlineId
     })
     .catch(e => router.push({
-      path: '/'
+      path: '#'
     }))
 
 function book() {
@@ -88,7 +88,7 @@ function book() {
           <div class="form-group mb-3" v-if="airlines">
             <label for="airline">Avio kompanija:</label>
             <select class="form-control" id="airline" v-model="ticket.airlineId">
-              <option v-for="airline in airlines" :value="airline.airlineId">{{ airline.name }}</option>
+              <option v-for="airline in airlines" :value="airline.airlineId">{{ airline }}</option>
             </select>
           </div>
         </form>
