@@ -34,7 +34,7 @@ TicketService.getAllAirlines()
       ticket.airlineId = rsp.data[0].airlineId
     })
     .catch(e => router.push({
-      path: '#'
+      path: '/'
     }))
 
 function book() {
@@ -97,8 +97,8 @@ function book() {
               Povratan let
             </label>
           </div>
-          <button class="btn btn-outline-success" @click="book">
-            <i class="fa-solid fa-save"></i>&nbsp;Rezervisi let
+          <button class="btn btn-outline-success btn-lg" @click="book">
+            <i class="bi bi-bookmark-plus-fill"></i>&nbsp;Rezerviši kartu
           </button>
         </form>
       </div>
