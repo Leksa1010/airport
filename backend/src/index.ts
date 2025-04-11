@@ -2,6 +2,7 @@ import { AppDataSource } from "./db"
 import express from 'express'
 import morgan from 'morgan'
 import cors from 'cors'
+import {AirlineRoute} from "./routes/airline.route";
 
 const app = express()
 app.use(express.json())
@@ -15,3 +16,5 @@ AppDataSource.initialize()
         app.listen(port, () => console.log(`Listening on port ${port}`))
     })
     .catch(e => console.log(e))
+
+app.use('/api/airline', AirlineRoute)
