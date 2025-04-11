@@ -1,9 +1,9 @@
 import {Router} from "express";
 import {TicketService} from "../services/ticket.service";
 
-export const TicketRouter = Router()
+export const TicketRoute = Router()
 
-TicketRouter.get("/", async (req, res) => {
+TicketRoute.get("/", async (req, res) => {
     try{
         res.json(await TicketService.getAllTickets())
     } catch(e) {
