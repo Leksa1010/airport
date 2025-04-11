@@ -1,14 +1,15 @@
 <script setup lang="ts">
 
-import type {FlightModel} from '@/models/flight.model';
-import {FlightService} from "@/services/flight.service.ts";
-import {useRoute, useRouter} from "vue-router";
-import {ref} from "vue";
-import type {AirlineModel} from "@/models/airline.model.ts";
-import {TicketService} from "@/services/ticket.service.ts";
+import type { AirlineModel } from '@/models/airline.model';
+import type { FlightModel } from '@/models/flight.model';
+import { FlightService } from '@/services/flight.service';
+import { TicketService } from '@/services/ticket.service';
+import { ref } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+import { destImg } from '@/utils';
 
-const route = useRoute()
-const router = useRouter()
+const route = useRoute();
+const router = useRouter();
 const ticket = {
   flightId: 0,
   airlineId: 0,
@@ -17,9 +18,7 @@ const ticket = {
 
 const id = Number.parseInt(route.params.id as string)
 const flight = ref<FlightModel>()
-const airlines = ref<AirlineModel>()
-
-FlightService.getFlightById(id)
+TicketService.getFlightById(id)
     .then(rsp => {
       flight.value = rsp.data
       ticket.flightId = rsp.data.id
@@ -28,6 +27,7 @@ FlightService.getFlightById(id)
       path: '/'
     }))
 
+const airlines = ref<AirlineModel[]>()
 TicketService.getAllAirlines()
     .then(rsp => {
       airlines.value = rsp.data
@@ -37,9 +37,15 @@ TicketService.getAllAirlines()
       path: '/'
     }))
 
-function destImg() {
-  if (flight.value == undefined) return
-  return 'https://img.pequla.com/destination/' + flight.value.destination.toLowerCase().split(' ')[0] + '.jpg'
+function book() {
+  TicketService.createTicket(ticket)
+      .then(rsp =>
+          router.push({
+            path: '/ticket'
+          }))
+      .catch(e => router.push({
+        path: '/'
+      }))
 }
 </script>
 
@@ -80,14 +86,14 @@ function destImg() {
             <input type="text" class="form-control" id="destination" v-model="flight.destination" disabled>
           </div>
           <div class="form-group mb-3" v-if="airlines">
-            <label for="airlines">Avio kompanija</label>
-            <select class="form-control" id="airlines" v-model="ticket.airlineId">
-              <option v-for="airline in airlines" :value="airlines.airlineId"> {{ airline.name }}</option>
+            <label for="airline">Avio kompanija:</label>
+            <select class="form-control" id="airline" v-model="ticket.airlineId">
+              <option v-for="airline in airlines" :value="airline.airlineId">{{ airline.name }}</option>
             </select>
           </div>
         </form>
       </div>
-      <img :src="destImg()" :alt="flight?.destination" class="card-img-top"/>
+      <img :src="destImg(flight)" :alt="flight?.destination" class="card-img-top"/>
     </div>
   </div>
 </template>
