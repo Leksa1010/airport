@@ -20,7 +20,7 @@ export class TicketService {
     }
 
     static async getAllAirlines() {
-        return await client.get('/airlines')
+        return await client.get('/airline')
     }
 
     static async createTicket(payload: any) {

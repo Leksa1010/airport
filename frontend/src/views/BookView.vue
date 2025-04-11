@@ -88,11 +88,21 @@ function book() {
           <div class="form-group mb-3" v-if="airlines">
             <label for="airline">Avio kompanija:</label>
             <select class="form-control" id="airline" v-model="ticket.airlineId">
-              <option v-for="airline in airlines" :value="airline.airlineId">{{ airline }}</option>
+              <option v-for="airline in airlines" :value="airline.airlineId">{{ airline.name }}</option>
             </select>
           </div>
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" id="return" v-model="ticket.return">
+            <label class="form-check-label" for="return">
+              Povratan let
+            </label>
+          </div>
+          <button class="btn btn-outline-success" @click="book">
+            <i class="fa-solid fa-save"></i>&nbsp;Rezervisi let
+          </button>
         </form>
       </div>
+      <br>
       <div class="d-flex justify-content-center align-items-center">
         <img :src="destImg(flight)" :alt="flight?.destination" class="card-img-top" style="width: 70%"/>
       </div>

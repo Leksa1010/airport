@@ -1,5 +1,5 @@
 export interface AirlineModel {
     airlineId: number;
-    airlineName: string;
+    name: string;
     createdAt: string;
 }
