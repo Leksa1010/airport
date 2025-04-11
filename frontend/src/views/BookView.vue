@@ -1,12 +1,12 @@
 <script setup lang="ts">
 
-import type { AirlineModel } from '@/models/airline.model';
-import type { FlightModel } from '@/models/flight.model';
-import { FlightService } from '@/services/flight.service';
-import { TicketService } from '@/services/ticket.service';
-import { ref } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
-import { destImg } from '@/utils';
+import type {AirlineModel} from '@/models/airline.model';
+import type {FlightModel} from '@/models/flight.model';
+import {FlightService} from '@/services/flight.service';
+import {TicketService} from '@/services/ticket.service';
+import {ref} from 'vue';
+import {useRoute, useRouter} from 'vue-router';
+import {destImg} from '@/utils';
 
 const route = useRoute();
 const router = useRouter();
@@ -93,7 +93,9 @@ function book() {
           </div>
         </form>
       </div>
-      <img :src="destImg(flight)" :alt="flight?.destination" class="card-img-top"/>
+      <div class="d-flex justify-content-center align-items-center">
+        <img :src="destImg(flight)" :alt="flight?.destination" class="card-img-top" style="width: 70%"/>
+      </div>
     </div>
   </div>
 </template>
