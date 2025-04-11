@@ -74,8 +74,8 @@ onMounted(() => retrieveData())
             <div class="btn-group">
               <RouterLink class="btn btn-outline-info mx-1" :to="'/flight/' + flight.id" title="Detalji"><i
                   class="fa-solid fa-circle-info"></i></RouterLink>
-              <button type="button" class="btn btn-outline-success mx-1"><i class="fa-solid fa-cart-shopping"></i>
-              </button>
+              <RouterLink class="btn btn-outline-success mx-1" :to="'/flight/' + flight.id + '/book'" title="Detalji"><i
+                  class="fa-solid fa-cart-shopping"></i></RouterLink>
             </div>
           </td>
         </tr>
