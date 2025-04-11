@@ -22,4 +22,19 @@ export class TicketService {
     static async getAllAirlines() {
         return await client.get('/airlines')
     }
+
+    static async createTicket(payload: any) {
+        return await client.request({
+            method: 'post',
+            url: '/ticket',
+            data: payload
+        })
+    }
+
+    static async deleteTicket(id: number) {
+        return await client.request({
+            method: 'delete',
+            url: '/ticket/' + id
+        })
+    }
 }
