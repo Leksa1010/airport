@@ -62,7 +62,7 @@ function book() {
             <RouterLink v-else to="/arrivals">Dolasci</RouterLink>
           </li>
           <li class="breadcrumb-item active" aria-current="page">
-            <RouterLink to="#" @click.prevent="$router.back()">
+            <RouterLink :to="'/flight/' + flight.id">
               {{ flight.destination }} {{ flight.flightNumber }}
             </RouterLink>
           </li>
