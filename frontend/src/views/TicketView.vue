@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { TicketService } from '@/services/ticket.service';
-import { ref } from 'vue'
+import {TicketService} from '@/services/ticket.service';
+import {ref} from 'vue'
+import type {TicketModel} from "@/models/ticket.model.ts";
 
 const tickets = ref<any>()
 TicketService.getAllTickets().then(rsp => {
@@ -11,6 +12,16 @@ TicketService.getAllTickets().then(rsp => {
     })
   })
 })
+
+function remove(ticket: TicketModel) {
+  if (confirm(`Da li ste sigurni da želite da obrišete kartu za ${ticket.flight.destination}?`)) {
+    TicketService.deleteTicket(ticket.ticketId)
+        .then(rsp => {
+          tickets.value = tickets.value?.filter(t => ticket.ticketId != t.ticketId)
+        })
+  }
+}
+
 </script>
 
 <template>
@@ -35,7 +46,7 @@ TicketService.getAllTickets().then(rsp => {
       <tr v-for="ticket in tickets" :ticket-id="ticket.id" :key="ticket.ticketId">
         <th scope="row">{{ ticket.flight.flightNumber }}</th>
         <td>{{ ticket.flight.destination }}</td>
-        <td>{{ new Date(ticket.createdAt).toLocaleString('sr')}}</td>
+        <td>{{ new Date(ticket.createdAt).toLocaleString('sr') }}</td>
         <td v-if="ticket.flight.type.name === 'DEPARTURE'"><i class="fa-solid fa-plane-departure"></i> Odlazni</td>
         <td v-else><i class="fa-solid fa-plane-arrival"></i> Dolazni</td>
         <td>{{ (ticket.flight.gate) ? ticket.flight.gate : "N/A" }}</td>
@@ -45,8 +56,12 @@ TicketService.getAllTickets().then(rsp => {
           <div class="btn-group">
             <RouterLink class="btn btn-outline-info mx-1" :to="'/flight/' + ticket.flight.id" title="Detalji"><i
                 class="fa-solid fa-circle-info"></i></RouterLink>
-            <RouterLink class="btn btn-outline-success mx-1" :to="'/flight/' + ticket.flight.id + '/book'" title="Rezervacija"><i
+            <RouterLink class="btn btn-outline-success mx-1" :to="'/flight/' + ticket.flight.id + '/book'"
+                        title="Rezervacija"><i
                 class="fa-solid fa-cart-shopping"></i></RouterLink>
+            <button type="button" class="btn btn-outline-danger" title="Obriši" @click="remove(ticket)">
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
           </div>
         </td>
       </tr>
