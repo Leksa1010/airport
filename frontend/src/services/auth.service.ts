@@ -14,6 +14,10 @@ export class AuthService {
         return JSON.parse(auth);
     }
 
+    static hasAuth(): boolean {
+        return localStorage.getItem("auth") != undefined;
+    }
+
     static getAccessToken(): string {
         return this.getAuth().access
     }
