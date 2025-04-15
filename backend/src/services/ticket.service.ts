@@ -1,18 +1,19 @@
-import { IsNull } from "typeorm";
-import { AppDataSource } from "../db";
-import { Ticket } from "../entities/Ticket";
+import {IsNull} from "typeorm";
+import {AppDataSource} from "../db";
+import {Ticket} from "../entities/Ticket";
+import {UserService} from "./user.service";
 
 const repo = AppDataSource.getRepository(Ticket)
 
 export class TicketService {
-    static async getAllTickets() {
+    static async getAllTickets(auth: any) {
         const data = await repo.find({
             select: {
-              ticketId: true,
-              flightId: true,
-              airlineId: true,
-              return: true,
-              createdAt: true
+                ticketId: true,
+                flightId: true,
+                airlineId: true,
+                return: true,
+                createdAt: true
             },
             where: {
                 deletedAt: IsNull()
@@ -25,8 +26,9 @@ export class TicketService {
         return data
     }
 
-    static async createTicket(ticket: Ticket) {
-        ticket.userId = 1
+    static async createTicket(auth: any, ticket: Ticket) {
+        const user = await UserService.getByEmail(auth.email)
+        ticket.userId = user.userId
         ticket.deletedAt = null
         ticket.createdAt = new Date()
 
@@ -43,7 +45,7 @@ export class TicketService {
             }
         })
 
-        if(data == undefined)
+        if (data == undefined)
             throw new Error('Ticket not found')
 
         data.deletedAt = new Date()
