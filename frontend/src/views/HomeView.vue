@@ -89,7 +89,7 @@ function search() {
             <div class="btn-group">
               <RouterLink class="btn btn-outline-info mx-1" :to="'/flight/' + flight.id" title="Detalji"><i
                   class="fa-solid fa-circle-info"></i></RouterLink>
-              <RouterLink v-if="flight.type.name === 'DEPARTURE'" class="btn btn-outline-success mx-1" :to="'/flight/' + flight.id + '/book'" title="Rezervacija"><i
+              <RouterLink class="btn btn-outline-success mx-1" :to="'/flight/' + flight.id + '/book'" title="Rezervacija"><i
                   class="fa-solid fa-cart-shopping"></i></RouterLink>
             </div>
           </td>
