@@ -1,14 +1,14 @@
 <script setup lang="ts">
 
 import {ref} from "vue";
-import {useRouter} from "vue-router";
+import {useRoute, useRouter} from "vue-router";
 import {MainService} from "@/models/main.service.ts";
 import {AuthService} from "@/services/auth.service.ts";
 
 const email = ref<string>();
 const password = ref<string>();
 const router = useRouter()
-
+const route = useRoute()
 
 function doLogin() {
   if (email.value == undefined || email.value == "") {
