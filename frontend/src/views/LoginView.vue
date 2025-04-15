@@ -36,20 +36,21 @@ function doLogin() {
 
   <div class="container">
     <h1 class="container text-center"><i class="bi bi-box-arrow-in-right"></i> Prijavite se</h1>
-    <form v-on:submit.prevent="doLogin">
-      <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Email adresa</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-      </div>
-      <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Lozinka</label>
-        <input type="password" class="form-control" id="exampleInputPassword1">
-      </div>
-      <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    <hr>
+    <div class="d-flex justify-content-center align-items-center">
+      <form v-on:submit.prevent="doLogin">
+        <div class="mb-3">
+          <label for="email" class="form-label">Email adresa</label>
+          <input type="email" class="form-control" id="email" aria-describedby="help" v-model="email">
+          <div id="help" class="form-text">Obratite se administratoru ukoliko nemate nalog.</div>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Lozinka</label>
+          <input type="password" class="form-control" id="password" v-model="password">
+        </div>
+        <button type="submit" class="btn btn-outline-primary"><i class="bi bi-door-open-fill"></i> Prijava</button>
+      </form>
+    </div>
+    <br>
   </div>
 </template>
