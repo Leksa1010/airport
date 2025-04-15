@@ -35,6 +35,7 @@ export class UserService {
 
     static async refresh(token: string) {
         const decoded: any = jwt.verify(token, refreshSecret);
+        const email = decoded.email;
         return {
             access: jwt.sign({email: decoded.email}, accessSecret, {expiresIn: accessTTL}),
             refresh: token
