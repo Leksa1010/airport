@@ -1,36 +1,37 @@
-import type {AuthModel} from "@/models/auth.model.ts";
+import type { AuthModel } from "@/models/auth.model.ts";
 
 export class AuthService {
     static saveAuth(model: AuthModel) {
-        localStorage.clear();
         localStorage.setItem("auth", JSON.stringify(model));
     }
 
-    static getAuth(): AuthModel {
+    static getAuth(): AuthModel | null {
         const auth = localStorage.getItem("auth");
-        if (auth == undefined)
-            throw new Error('NO_LOGIN_DATA')
-
-        return JSON.parse(auth);
+        if (!auth) return null;
+        try {
+            return JSON.parse(auth);
+        } catch {
+            return null;
+        }
     }
 
     static hasAuth(): boolean {
-        return localStorage.getItem("auth") != undefined;
+        return this.getAuth() !== null;
     }
 
-    static getAccessToken(): string {
-        return this.getAuth().access
+    static getAccessToken(): string | null {
+        return this.getAuth()?.access || null;
     }
 
-    static getRefreshToken(): string {
-        return this.getAuth().refresh
+    static getRefreshToken(): string | null {
+        return this.getAuth()?.refresh || null;
     }
 
     static getUserEmail(): string {
-        return this.getAuth().email
+        return this.getAuth()?.email || '';
     }
 
     static clearAuth() {
-        localStorage.clear();
+        localStorage.removeItem("auth");
     }
 }

@@ -1,26 +1,63 @@
 <script setup lang="ts">
-import {RouterView} from 'vue-router'
-import NavbarLink from "@/components/NavbarLink.vue";
+import { ref, watchEffect } from 'vue'
+import { useRouter, RouterView, RouterLink } from 'vue-router'
+import NavbarLink from '@/components/NavbarLink.vue'
+import { AuthService } from '@/services/auth.service.ts'
 
+const router = useRouter()
 
+const isAuthenticated = ref(AuthService.hasAuth())
+const userEmail = ref(AuthService.getUserEmail())
+
+function logout() {
+  AuthService.clearAuth()
+  isAuthenticated.value = false
+  userEmail.value = ''
+  router.push('/')
+}
+
+watchEffect(() => {
+  isAuthenticated.value = AuthService.hasAuth()
+  userEmail.value = AuthService.getUserEmail()
+})
 </script>
 
 <template>
   <nav class="navbar navbar-expand-lg" style="background-color: #0f3460;">
     <div class="container">
-      <a class="navbar-brand" href="/">
-        <i class="fa-solid fa-plane-up"></i> Aerodrom</a>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <a class="navbar-brand text-white" href="/">
+        <i class="fa-solid fa-plane-up"></i> Aerodrom
+      </a>
 
-          <NavbarLink to="/destinations" name="Destinacije"/>
+      <div class="collapse navbar-collapse w-100">
+        <!-- Left-side nav links -->
+        <ul class="navbar-nav me-auto">
+          <NavbarLink to="/destinations" name="Destinacije" />
           <NavbarLink to="/departures" name="Odlazni letovi" />
           <NavbarLink to="/arrivals" name="Dolazni letovi" />
-          <NavbarLink to="/ticket" name="Karte" />
-
+          <NavbarLink v-if="isAuthenticated" to="/ticket" name="Karte" />
         </ul>
-        <div class="navbar-text">
-          Korisnik
+
+        <!-- Right-side login/logout area -->
+        <div class="d-flex align-items-center ms-auto">
+          <div v-if="isAuthenticated" class="navbar-text text-white me-3">
+            <i class="fa-solid fa-user"></i> {{ userEmail }}
+          </div>
+          <button
+              v-if="isAuthenticated"
+              class="btn btn-outline-light"
+              @click="logout"
+          >
+            <i class="fa-solid fa-person-through-window"></i> Odjavite se
+          </button>
+          <RouterLink
+              v-else
+              class="btn btn-outline-light"
+              to="/login"
+              title="Prijavite se"
+          >
+            <i class="bi bi-box-arrow-in-right"></i> Prijavite se
+          </RouterLink>
         </div>
       </div>
     </div>
@@ -28,6 +65,14 @@ import NavbarLink from "@/components/NavbarLink.vue";
 
   <RouterView />
 
-  <footer class="mx-auto text-center">&copy; Aleksa Petrović za Univerzitet Singidunum 2025</footer>
+  <footer class="mx-auto text-center mt-4 text-muted">
+    &copy; Aleksa Petrović za Univerzitet Singidunum 2025
+  </footer>
 </template>
 
+<style scoped>
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+</style>
