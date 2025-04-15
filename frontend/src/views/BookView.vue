@@ -91,9 +91,9 @@ function book() {
             </select>
           </div>
           <div class="form-check mb-3">
-            <input class="form-check-input" type="checkbox" id="return" v-model="ticket.return">
             <label class="form-check-label" for="return">
-              Povratan let
+            <input class="form-check-input" type="checkbox" id="return" v-model="ticket.return">
+              <span class="form-check-icon">Povratan let</span>
             </label>
           </div>
           <button class="btn btn-outline-success btn-lg" @click="book">
