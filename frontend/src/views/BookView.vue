@@ -33,7 +33,7 @@ TicketService.getAllAirlines()
       ticket.airlineId = rsp.data[0].airlineId
     })
     .catch(e => router.push({
-      path: '/'
+      path: '/login'
     }))
 
 function book() {
