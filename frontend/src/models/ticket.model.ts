@@ -5,6 +5,7 @@ export interface TicketModel {
     ticketId: number
     flightId: number
     airlineId: number
+    userID: number
     return: boolean
     createdAt: string
     flight: FlightModel
