@@ -44,8 +44,11 @@ watchEffect(() => {
           <button v-if="isAuthenticated" class="btn btn-outline-light" @click="logout">
             <i class="fa-solid fa-person-through-window"></i> Odjavite se
           </button>
-          <RouterLink v-else class="btn btn-outline-light" to="/login" title="Prijavite se">
+          <RouterLink v-else class="btn btn-outline-light me-3" to="/login" title="Prijavite se">
             <i class="bi bi-box-arrow-in-right"></i> Prijavite se
+          </RouterLink>
+          <RouterLink class="btn btn-outline-warning me-3" to="/register" title="Registrujte se">
+            <i class="fa-solid fa-user-plus"></i> Registrujte se
           </RouterLink>
         </div>
       </div>

@@ -24,8 +24,9 @@ function doLogin() {
   MainService.login(email.value, password.value)
       .then(rsp => {
         AuthService.saveAuth(rsp.data)
+        const go = (route.query.go) ? route.query.go as string: '/';
         router.push({
-          path: "/"
+          path: go
         })
       })
       .catch(e => alert(e.response.data.message));
@@ -42,7 +43,9 @@ function doLogin() {
         <div class="mb-3">
           <label for="email" class="form-label">Email adresa</label>
           <input type="email" class="form-control" id="email" aria-describedby="help" v-model="email">
-          <div id="help" class="form-text">Obratite se administratoru ukoliko nemate nalog.</div>
+          <div id="help" class="form-text">
+            <p>Ukoliko nemate nalog, nepohodno je da se <RouterLink class="btn btn-outline-warning me-3" to="/register">registrujete</RouterLink> </p>
+          </div>
         </div>
         <div class="mb-3">
           <label for="password" class="form-label">Lozinka</label>
