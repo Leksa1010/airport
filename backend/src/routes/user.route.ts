@@ -28,3 +28,15 @@ UserRoute.post('/refresh', async (req, res) => {
         })
     }
 })
+
+UserRoute.post('/register', async (req, res) => {
+    try{
+        res.json(await UserService.register(req.body));
+    }
+    catch(e) {
+        res.status(401).json({
+            message: e.message,
+            timestamp: new Date()
+        })
+    }
+})

@@ -42,14 +42,14 @@ function doLogin() {
       <form v-on:submit.prevent="doLogin">
         <div class="mb-3">
           <label for="email" class="form-label">Email adresa</label>
-          <input type="email" class="form-control" id="email" aria-describedby="help" v-model="email">
+          <input type="email" class="form-control" id="email" aria-describedby="help" v-model="email" placeholder="vasa@mejl.adresa" required>
           <div id="help" class="form-text">
             <p>Ukoliko nemate nalog, nepohodno je da se <RouterLink class="btn btn-outline-warning me-3" to="/register">registrujete</RouterLink> </p>
           </div>
         </div>
         <div class="mb-3">
           <label for="password" class="form-label">Lozinka</label>
-          <input type="password" class="form-control" id="password" v-model="password">
+          <input type="password" class="form-control" id="password" v-model="password" placeholder="Unesite Vašu lozinku" required>
         </div>
         <button type="submit" class="btn btn-outline-primary"><i class="bi bi-door-open-fill"></i> Prijava</button>
       </form>
