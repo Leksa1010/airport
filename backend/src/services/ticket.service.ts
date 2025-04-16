@@ -7,34 +7,41 @@ const repo = AppDataSource.getRepository(Ticket)
 
 export class TicketService {
     static async getAllTickets(auth: any) {
-        const data = await repo.find({
-            select: {
-                ticketId: true,
-                flightId: true,
-                airlineId: true,
-                return: true,
-                createdAt: true
-            },
-            where: {
-                deletedAt: IsNull()
-            },
-            relations: {
-                airline: true
-            }
-        })
+        try {
+            const user = await UserService.getByEmail(auth.email);
 
-        return data
+            const data = await repo.find({
+                select: {
+                    ticketId: true,
+                    flightId: true,
+                    airlineId: true,
+                    return: true,
+                    createdAt: true
+                },
+                where: {
+                    userId: user.userId,
+                    deletedAt: IsNull()
+                },
+                relations: {
+                    airline: true
+                }
+            });
+
+            return data;
+        } catch (error) {
+            throw new Error(`Greška pri preuzimanju karata: ${error.message}`);
+        }
     }
 
     static async createTicket(auth: any, ticket: Ticket) {
-        const user = await UserService.getByEmail(auth.email)
-        ticket.userId = user.userId
-        ticket.deletedAt = null
-        ticket.createdAt = new Date()
+        const user = await UserService.getByEmail(auth.email);
+        ticket.userId = user.userId;
+        ticket.deletedAt = null;
+        ticket.createdAt = new Date();
 
-        const data = await repo.save(ticket)
-        delete data.deletedAt
-        return data
+        const data = await repo.save(ticket);
+        delete data.deletedAt;
+        return data;
     }
 
     static async deleteTicket(id: number) {
@@ -43,12 +50,11 @@ export class TicketService {
                 ticketId: id,
                 deletedAt: IsNull()
             }
-        })
+        });
 
-        if (data == undefined)
-            throw new Error('Ticket not found')
+        if (!data) throw new Error('Ticket not found');
 
-        data.deletedAt = new Date()
-        await repo.save(data)
+        data.deletedAt = new Date();
+        await repo.save(data);
     }
 }

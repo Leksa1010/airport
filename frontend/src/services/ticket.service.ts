@@ -1,9 +1,8 @@
-import axios from "axios";
 import {MainService} from "@/models/main.service.ts";
 
 
-
 export class TicketService {
+
     static async getAllTickets() {
         return await MainService.useAxios('/ticket')
     }
