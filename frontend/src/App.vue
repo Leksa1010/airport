@@ -41,7 +41,7 @@ watchEffect(() => {
           <div v-if="isAuthenticated" class="navbar-text text-white me-3">
             <i class="fa-solid fa-user"></i> {{ userEmail }}
           </div>
-          <button v-if="isAuthenticated" class="btn btn-outline-light" @click="logout">
+          <button v-if="isAuthenticated" class="btn btn-outline-danger" @click="logout">
             <i class="fa-solid fa-person-through-window"></i> Odjavite se
           </button>
           <div v-else>
