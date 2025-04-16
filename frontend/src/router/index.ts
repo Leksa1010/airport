@@ -8,11 +8,13 @@ import DestinationsView from "@/views/DestinationsView.vue";
 import DestinationBrowserView from "@/views/DestinationBrowserView.vue";
 import FlightView from "@/views/FlightView.vue";
 import BookView from "@/views/BookView.vue";
+import RegisterView from "@/views/RegisterView.vue";
 import {AuthService} from "@/services/auth.service.ts";
 
 const routes = [
     {path: '/', component: HomeView, name: 'home'},
     {path: '/login', component: LoginView},
+    {path: '/register', component: RegisterView},
     {path: '/ticket', component: TicketView, meta: {requiresAuth: true},},
     {path: '/arrivals', component: ArrivalsView, name: 'arrivals'},
     {path: '/departures', component: DeparturesView, name: 'departures'},
