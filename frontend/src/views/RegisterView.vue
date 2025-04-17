@@ -2,7 +2,7 @@
 
 import {ref} from "vue";
 import {useRouter} from "vue-router";
-import {MainService} from "@/models/main.service.ts";
+import {MainService} from "@/services/main.service.ts";
 
 const email = ref<string>()
 const password = ref<string>()

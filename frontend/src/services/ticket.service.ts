@@ -1,4 +1,4 @@
-import {MainService} from "@/models/main.service.ts";
+import {MainService} from "@/services/main.service.ts";
 
 
 export class TicketService {
